@@ -1,21 +1,30 @@
 var axios = require('axios');
 
-var config = {
-    method: 'post',
-    url: 'http://localhost:3000/api/items',
-    headers: { 
-      'Content-Type': 'application/json', 
-      'X-Requested-With': 'XMLHttpRequest', 
-    },
-};
 
 for(let i = 0; i < 101; i++) {
-   
-      config.data.user = {
-                email: `john${i}@jacob.com`,
-                password: "1234678",
-                username: `john${i}`
-            }
+
+    config = {
+
+        method: 'post',
+        url: 'http://localhost:3000/api/users',
+        headers: { 
+            'Content-Type': 'application/json', 
+            'X-Requested-With': 'XMLHttpRequest', 
+        },
+        user: {
+            email: `${i}john@jacob.com`,
+            password: "1234678",
+            username: `${i}john`
+        }
+    }
+
+    axios(config)
+.then(function (response) {
+  console.log(JSON.stringify(response.data));
+})
+.catch(function (error) {
+  console.log(error);
+});
         
       
 }
@@ -44,10 +53,10 @@ for(let i = 0; i < 101; i++) {
 //   data : data
 // };
 
-axios(config)
-.then(function (response) {
-  console.log(JSON.stringify(response.data));
-})
-.catch(function (error) {
-  console.log(error);
-});
+// axios(config)
+// .then(function (response) {
+//   console.log(JSON.stringify(response.data));
+// })
+// .catch(function (error) {
+//   console.log(error);
+// });
