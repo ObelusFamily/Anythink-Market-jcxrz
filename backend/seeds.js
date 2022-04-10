@@ -5,16 +5,18 @@ for(let i = 0; i < 101; i++) {
 
     config = {
 
-        method: 'post',
+        method: 'POST',
         url: 'http://localhost:3000/api/users',
         headers: { 
             'Content-Type': 'application/json', 
             'X-Requested-With': 'XMLHttpRequest', 
         },
-        user: {
+        data: {
+          user: {
             email: `${i}john@jacob.com`,
             password: "1234678",
             username: `${i}john`
+          }
         }
     }
 
