@@ -29,7 +29,6 @@ var axios = require("axios");
 //     });
 // }
 
-console.log(config);
 
 const addItem = (token) => {
 
