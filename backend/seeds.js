@@ -17,7 +17,7 @@ var config = {
   headers: { 
     'Content-Type': 'application/json', 
     'X-Requested-With': 'XMLHttpRequest', 
-    'Authorization': 'Token eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyNGYyMzAyOTQ4NTI5MDA0ODQ0YmYyZCIsInVzZXJuYW1lIjoiZWl0YW5ncnVuc2VpZCIsImV4cCI6MTY1NDYwNjQ4OSwiaWF0IjoxNjQ5NDIyNDg5fQ.9WWPAYK0gzbp8TN8UBGMeDbrSUb01sqh1jnG6pbfGqY'
+    'Authorization': 'Token '
   },
   data : data
 };
