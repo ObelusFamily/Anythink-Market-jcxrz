@@ -1,32 +1,71 @@
 var axios = require('axios');
 
+const getToken = async () => {
 
-for(let i = 0; i <= 101; i++) {
+    var data = JSON.stringify({
+        "user": {
+    "email": "john1@jacob.com",
+    "password": "12345678"
+}
+});
 
-    config = {
+var config = {
+    method: 'post',
+    url: 'http://localhost:3000/api/users/login',
+    headers: { 
+        'Content-Type': 'application/json', 
+        'X-Requested-With': 'XMLHttpRequest'
+  },
+  data : data
+};
 
-        method: 'POST',
-        url: 'http://localhost:3000/api/users',
-        headers: { 
-            'Content-Type': 'application/json', 
-            'X-Requested-With': 'XMLHttpRequest', 
-        },
-        data: {
-          user: {
-            email: `john${i}@jacob.com`,
-            password: "1234678",
-            username: `john${i}`
-          }
-        }
-    }
+ const response = await axios(config)
+const user = response.data.user
+return user
+// .then(async function (response) {
+//     // console.log(JSON.stringify(response.data));
+//     const user = response.data
+//     console.log("🚀 ~ file: seeds.js ~ line 26 ~ user", user)
+// })
+// .catch(function (error) {
+//     console.log(error);
+// });
 
-    axios(config)
+}
+
+const useToken = async () => {
+  const user = await getToken()
+
+var data = JSON.stringify({
+  "item": {
+    "title": "eitan test",
+    "description": "eitan test",
+    "body": "test",
+    "tagList": [
+      "dragons",
+      "training"
+    ]
+  }})
+
+  var config = {
+    method: 'post',
+    url: 'http://localhost:3000/api/items',
+    headers: { 
+      'Content-Type': 'application/json', 
+      'X-Requested-With': 'XMLHttpRequest', 
+      'Authorization': `Token ${user.token}`
+    },
+    data : data
+  };
+
+  axios(config)
 .then(function (response) {
   console.log(JSON.stringify(response.data));
 })
 .catch(function (error) {
   console.log(error);
 });
-        
-      
+  
 }
+
+useToken()
